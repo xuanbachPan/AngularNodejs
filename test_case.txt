@@ -1,0 +1,67 @@
+Test Cases:
+1. Click the Add Item button one time / many times -> Fill value into input  fields -> Click the Insert Items To Database button
+-> show pupup: Do you want to insert all of these items? -> Click OK button 
+-> Show the notice: Insert Data into DB successful.
+
+
+2. Click the Add Item button one time / many times -> Don't fill value into input fields -> Click the Insert Items To Database button
+-> show pupup: Do you want to insert all of these items? -> Click OK button
+-> Show the notice: Invalid Input.
+
+3. Click the Add Item button one time / many times -> Fill value into input  fields -> Click the Insert Items To Database button
+-> show pupup: Do you want to insert all of these items? -> Click Close button -> the popup hides.
+
+4. Click the Add Item button one time / many times -> Click the Cancel Add All New Items -> All new rows hide.
+
+5. Click the Add Item button one time / many times -> Click the Cancel button -> The new row which has the clicked cancel button hides.
+
+6. Click an Edit Item button -> Fill values into input  fields -> Click the Save Item -> 
+Show popup (Do you want to save the edited item with No:...) -> Click OK -> Show popup: Save item with No:... successful.
+-> The page update value of the edited item.
+
+7. Click an Edit Item button -> Don't fill values into input  fields -> Click the Save Item ->
+Show popup (Do you want to save the edited item with No:...) -> Click OK -> Show popup: Invalid Input
+
+8. Click an Edit Item button -> Fill value into input  fields -> Click the Save Item -> 
+Show popup (Do you want to save the edited item with No:...) -> Click Close button ->Hide the popup 
+
+9. Click an Edit Item button -> Fill value into input  fields -> Click the Cancel button ->
+The page keep old values for all input fileds of the item.
+
+10. Click the Delete button -> show popup: Do you want to delete the item with No:... -> click OK button -> 
+show popup: Delete item with No:... successful -> The page update item list, the deleted item doesn't exist in the list
+
+11. Click the Delete button -> show popup: Do you want to delete the item with No:... -> click Close button -> Hide popup
+
+12. Click the Add Item many times -> fill input fields -> click an Edit Item button -> click Save Item -> click OK button in the popop:
+Do you want to save the edited item with No:...
+-> Save the edited item successful -> The page load new edited information and
+ Keep status: Add new items and keep all information of input fields in the New: 1, New: 2, ... lines 
+
+13. Click many Edit Item buttons -> fill input fields -> choose an Save Item button and click -> click OK button in the popop:
+Do you want to save the edited item with No:...
+-> The page load new edited information and
+ Keep status: Edit items and keep all information of input fields in lines are editing
+ 
+14. Click the Add Item many times -> fill input fields -> click many Edit Item buttons -> fill input fields
+-> Click the Insert Items To Database button -> show popup: Do you want to insert all of these items?
+-> Click OK button -> Show the notice: Insert Data into DB successful.
+-> The page load information, all new items were inserted to the list
+And Keep status: Edit items and keep all information of input fields in lines are editing
+
+15. Modify query syntax in the server ( from true to wrong syntax )
+-> show the popup: Error + An error occurrs while the program request server.
+Check with actions: get list from DB (get action), insert items into DB (post action) , update item (put action), delete item ( delete action )
+
+16. Turn off the server
+-> show the popup: Error + The client can't connect to the server.
+Check with actions: get list from DB (get action), insert items into DB (post action) , update item (put action), delete item ( delete action )
+
+17. Open two sites -> The 1st site, edit items -> The 2nd site, edit items -> The 1s site, save edited items 
+-> The 2nd site, save edited items -> The screen of the 2nd site update all edited items ( editting in 1st site and 2nd site )
+
+18. Open two sites -> The 1st site, edit items -> The 2nd site, delete items -> The 1s site, save edited items 
+-> The screen of the 1st site update all edited items and the list doesn't contain deleted items ( deleting in the 2nd site )
+
+19. Open two sites -> The 1st site, edit items -> The 2nd site, add new items -> insert all new items into DB
+-> The 1st site, save edited items -> The 1st site, update all edited item + all new items (created in the 2nd site)
