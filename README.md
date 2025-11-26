@@ -7,3 +7,5 @@ This simple project bases on examples of Tutorialspoint.
 link: https://www.tutorialspoint.com/angular/index.htm 
 (chapter Angular HTTP Client programming and others...)
 
+Youtube link for testing (19 testcases):
+https://www.youtube.com/watch?v=x6c11_hPxwU
