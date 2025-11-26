@@ -1,0 +1,117 @@
+<p>{{title}}</p>
+<!-- <ul> 
+   <li *ngFor="let item of expenseEntries">
+      {{item.id}} || {{item.item}} || {{item.amount}} || {{item.category}} || {{item.location}} || {{item.spendOn}} || {{item.createdOn}}
+   </li>
+</ul> -->
+<table id="tblListExpenseEntries" style="min-width:1255px;">
+   <thead>
+      <tr>
+         <th style="width: 80px;">No</th>
+         <th style="width: 180px;">Item</th>
+         <th style="width: 80px;">Amount</th>
+         <th style="width: 180px;">Category</th>
+         <th style="width: 180px;">Location</th>
+         <th style="width: 180px;">Spend On</th>
+         <th style="width: 180px;">Created On</th>
+         <th style="width: 195px;">Action</th>
+      </tr>
+   </thead>
+   <tbody id="tblListExpenseEntriesBody">
+      <tr *ngFor="let item of expenseEntries">
+         <td style="text-align:center;">{{item.id}}</td>
+         <td style="text-align:center;">
+            <div *ngIf="editLineNoArr.indexOf(item.id)==-1">
+               {{item.item}}
+            </div>  
+            <div *ngIf="editLineNoArr.indexOf(item.id)!=-1">
+               <input type="text" [name]="'item_' + item.id" [id]="'item_' + item.id" [value]="(editLineDataArr[editLineNoArr.indexOf(item.id)].item != '') ? editLineDataArr[editLineNoArr.indexOf(item.id)].item : item.item"/>               
+            </div>
+         </td>
+         <td style="text-align:center;">
+            <div *ngIf="editLineNoArr.indexOf(item.id)==-1">
+               {{item.amount}}
+            </div>
+            <div *ngIf="editLineNoArr.indexOf(item.id)!=-1" style="max-width:80px;">
+               <input type="text" style="max-width:72px;" [name]="'amount_' + item.id" [id]="'amount_' + item.id" [value]="(editLineDataArr[editLineNoArr.indexOf(item.id)].amount != 0) ? editLineDataArr[editLineNoArr.indexOf(item.id)].amount : item.amount"/>               
+            </div>
+         </td>
+         <td style="text-align:center;">
+            <div *ngIf="editLineNoArr.indexOf(item.id)==-1">
+               {{item.category}}
+            </div>
+            <div *ngIf="editLineNoArr.indexOf(item.id)!=-1">
+               <input type="text" [name]="'category_' + item.id" [id]="'category_' + item.id" [value]="(editLineDataArr[editLineNoArr.indexOf(item.id)].category != '') ? editLineDataArr[editLineNoArr.indexOf(item.id)].category : item.category"/>               
+            </div>
+         </td>
+         <td style="text-align:center;">
+            <div *ngIf="editLineNoArr.indexOf(item.id)==-1">
+               {{item.location}}
+            </div>  
+            <div *ngIf="editLineNoArr.indexOf(item.id)!=-1">
+               <input type="text" [name]="'location_' + item.id" [id]="'location_' + item.id" [value]="(editLineDataArr[editLineNoArr.indexOf(item.id)].location != '') ? editLineDataArr[editLineNoArr.indexOf(item.id)].location : item.location"/>               
+            </div>         
+         </td>
+         <td style="text-align:center;">
+            <div *ngIf="editLineNoArr.indexOf(item.id)==-1">
+               {{item.spendOn | date:'yyyy-MM-dd HH:mm'}}
+            </div>
+            <div *ngIf="editLineNoArr.indexOf(item.id)!=-1">
+               {{editLineDataArr[editLineNoArr.indexOf(item.id)].spendOn | date:'yyyy-MM-dd HH:mm'}}
+            </div>       
+         </td>
+         <td style="text-align:center;">
+            {{item.createdOn | date:'yyyy-MM-dd HH:mm'}}
+         </td>
+         <td>
+            <div *ngIf="editLineNoArr.indexOf(item.id)==-1">
+               <button [id]="'btnEditItem_' + item.id" class="btnEditItem" (click)="this.editItem(item.id)">Edit Item</button>
+               <button [id]="'btnDelItem_' + item.id" class="btnDelItem" (click)="this.clickDelItem(item.id)">Delete Item</button>
+            </div>
+            <div *ngIf="editLineNoArr.indexOf(item.id)!=-1">
+               <button [id]="'btnSaveItem_' + item.id" class="btnSaveItem" (click)="this.clickSaveEditedItem(item.id)">Save Item</button>
+               <button [id]="'btnCancel_' + item.id" class="btnCancelEdit" (click)="this.cancelEditItem(item.id)">Cancel</button>
+            </div>
+         </td>
+      </tr>
+      <tr *ngFor="let newRow of newRows">
+         <td style="text-align:center;">New: {{newRow.id-maxItemID}}</td>
+         <td style="text-align:center;"><input type="text" [name]="'item_' + newRow.name" [id]="'item_' + newRow.id" required/></td>
+         <td style="text-align:center; max-width:80px;"><input type="text" style="max-width:72px;" [name]="'amount_' + newRow.name" [id]="'amount_' + newRow.id" /></td>
+         <td style="text-align:center;"><input type="text" [name]="'category_' + newRow.name" [id]="'category_' + newRow.id" /></td>
+         <td style="text-align:center;"><input type="text" [name]="'location_' + newRow.name" [id]="'location_' + newRow.id" /></td>
+         <td style="text-align:center;">{{addLineDataArr[newRow.id-maxItemID-1].spendOn | date:'yyyy-MM-dd HH:mm'}}</td>
+         <td style="text-align:center;">{{addLineDataArr[newRow.id-maxItemID-1].createdOn | date:'yyyy-MM-dd HH:mm'}}</td>
+         <td style="text-align:center;"><button [id]="'btnCancel_' + newRow.id" class="btnCancelAdd" (click)="this.cancelAddNewItem(newRow.id)">Cancel</button></td>
+      </tr>
+   </tbody>
+</table>
+<div class="Insert" style="margin-top: 10px;">
+   <button id="btnAddItem" (click)="this.addItem()">Add Item</button>
+   <button id="btnInsertItemsToDatabase" [disabled]="(this.countNewRow==0)? 'disabled' : ''" (click)="this.clickInsertDatabase()">Insert Items To Database</button>
+   <button id="btnCancelAddAllNewIems" [disabled]="(this.countNewRow==0)? 'disabled' : ''" (click)="this.cancelAddAllNewItems()">Cancel Add All New Items</button>
+</div>
+
+<div><h3>Uploads</h3></div>
+<form enctype="multipart/form-data">
+   <label for="formFile" class="form-label">Upload file example </label>
+   <input type="file" 
+   name="photo" id="file" (change)="this.onFilechange($event)" 
+   />
+   <div *ngIf="file">
+      <section class="file-info">
+         File details:
+         <ul>
+            <li>Name: {{file.name}}</li>
+            <li>Type: {{file.type}}</li>
+            <li>Size: {{file.size}} bytes</li>
+         </ul>
+      </section>
+      <p *ngIf="message">{{message}}</p>
+   
+      <button (click)="this.upload()" type="button">Upload</button>
+   </div>
+</form>
+
+
+

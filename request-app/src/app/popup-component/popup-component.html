@@ -1,0 +1,14 @@
+<div style="padding: 5px; background-color:rgb(119, 119, 122);">
+    <div style="padding: 5px;background-color:rgb(204, 204, 218);">
+        <div style="text-align: center;">
+            <h2>{{titleMessage}}</h2>
+        </div>      
+        <div style="padding-left: 5px;">
+           <p>{{confirmMessage}}</p>
+        </div>
+        <div style="display: flex; justify-content: flex-end;">
+            <button *ngIf="showOKbtn" style="margin-right: 5px;" mat-button (click)="clickOK()">OK</button>
+            <button mat-button (click)="clickCancel()">Close</button>
+        </div>   
+    </div>
+</div>
