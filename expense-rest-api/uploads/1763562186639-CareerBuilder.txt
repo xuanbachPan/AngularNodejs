@@ -1,0 +1,27 @@
+
+CÔNG TY TNHH RORZE ROBOTECH
+Nhân Viên Phần Mềm
+https://www.careerlink.vn/tim-viec-lam/nhan-vien-phan-mem/3299598?area_code=HP&source=site
+Mô tả công việc
+* Mô tả công việc:
+
+- Khảo sát chi tiết yêu cầu công việc, xây dựng các phần mềm phục vụ quản lý, tự động hóa trong công ty
+
+- Cải tiến công việc các bộ phận bằng tự động hóa, IT hóa, áp dụng AI tăng hiệu quả công việc
+
+- Lập trình Web.Net Core, Sql Server, AI
+
+- Thực hiện bảo trì, nâng cấp hệ thống phần mềm có sẵn
+
+Kinh nghiệm / Kỹ năng chi tiết
+- Tốt nghiệp Đại học chuyên ngành Công nghệ thông tin, Kỹ thuật phần mềm
+
+- Biết một trong các ngôn ngữ: C#, Python, C++
+
+- Tiếng Anh Toeic 450
+
+- Tin học văn phòng (word, excel, powerpoint) thành thạo
+
+- Ưu tiên có kiến thức về ABP framework, Devextreme, Devexpress
+
+- Ưu tiên có kinh nghiệm về AI, Machine learning, Deep learning, xử lý hình ảnh, ngôn ngữ tự nhiên
